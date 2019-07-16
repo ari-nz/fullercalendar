@@ -5,17 +5,19 @@
 #' @import htmlwidgets
 #'
 #' @export
-fullercalendar <- function(message, width = NULL, height = NULL, elementId = NULL) {
+fullercalendar <- function(events = NULL, settings = list(), width = NULL, height = NULL, elementId = NULL) {
 
-  # forward options using x
-  x = list(
-    message = message
-  )
+  settings$events <- events
+  #json_settings <- jsonlite::toJSON(settings, auto_unbox = TRUE, json_verbatim = TRUE)
+  # attr(settings, 'TOJSON_ARGS') <- list(dataframe = "rows")
+  settings = list(events = events,
+               settings = settings)
+
 
   # create widget
   htmlwidgets::createWidget(
     name = 'fullercalendar',
-    x,
+    x = settings,
     width = width,
     height = height,
     package = 'fullercalendar',

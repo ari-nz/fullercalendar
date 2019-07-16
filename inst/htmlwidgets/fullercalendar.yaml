@@ -6,6 +6,7 @@ dependencies:
    script: "main.min.js"
    stylesheet: "main.min.css"
 
+
  - name: "daygrid"
    version: 4.2.0
    src: "htmlwidgets/lib/daygrid"
@@ -61,3 +62,5 @@ dependencies:
      - "main.min.js"
      - "locals-all.min.js"
    stylesheet: "main.min.css"
+
+

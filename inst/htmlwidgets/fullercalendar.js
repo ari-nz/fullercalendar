@@ -10,10 +10,22 @@ HTMLWidgets.widget({
 
     return {
 
-      renderValue: function(x) {
 
-        // TODO: code to render the widget, e.g.
-        el.innerText = x.message;
+      renderValue: function(opts) {
+        console.log("Options are")
+        console.log(opts)
+        var opts = opts
+
+        console.log("Element is")
+        console.log(el)
+
+        var calendarEl = el
+        //debugger;
+         // $(el).fullCalendar( 'destroy' );
+        var calendar = new FullCalendar.Calendar(el, opts);
+
+        calendar.render();
+        // $(el).fullCalendar(x);
 
       },
 
