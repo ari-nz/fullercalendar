@@ -10,8 +10,8 @@ HTMLWidgets.widget({
 
     return {
 
-      renderValue: function(x) {
 
+<<<<<<< HEAD
         var opts = x
         window.fc_opts = opts
 
@@ -35,6 +35,23 @@ HTMLWidgets.widget({
 
         calendar.render();
 
+=======
+      renderValue: function(opts) {
+        console.log("Options are")
+        console.log(opts)
+        var opts = opts
+
+        console.log("Element is")
+        console.log(el)
+
+        var calendarEl = el
+        //debugger;
+         // $(el).fullCalendar( 'destroy' );
+        var calendar = new FullCalendar.Calendar(el, opts);
+
+        calendar.render();
+        // $(el).fullCalendar(x);
+>>>>>>> master
 
       },
 

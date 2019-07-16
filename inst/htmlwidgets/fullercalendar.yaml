@@ -16,6 +16,7 @@ dependencies:
       - "main.css"
       - "bootstrap.min.css"
 
+
  - name: "daygrid"
    version: 4.2.0
    src: "htmlwidgets/lib/daygrid"

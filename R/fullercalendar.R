@@ -11,16 +11,13 @@ fullercalendar <- function(events = NULL,
                            height = NULL,
                            elementId = NULL) {
 
-
-
-
-
   full_opts = list(
     events = events,
     settings = settings
   )
-  
+
   attr(full_opts, 'TOJSON_ARGS') <- list(dataframe = "rows")
+
 
   # create widget
   htmlwidgets::createWidget(
