@@ -1,63 +1,64 @@
 # (uncomment to add a dependency)
 dependencies:
- - name: "bootstrap"
-   version: 4.2.0
-   src: "htmlwidgets/lib/bootstrap"
-   script: "main.min.js"
-   stylesheet: "main.min.css"
-
- - name: "daygrid"
-   version: 4.2.0
-   src: "htmlwidgets/lib/daygrid"
-   script: "main.min.js"
-   stylesheet: "main.min.css"
-
- - name: "google-calendar"
-   version: 4.2.0
-   src: "htmlwidgets/lib/google-calendar"
-   script: "main.min.js"
-
- - name: "interaction"
-   version: 4.2.0
-   src: "htmlwidgets/lib/interaction"
-   script: "main.min.js"
-
- - name: "list"
-   version: 4.2.0
-   src: "htmlwidgets/lib/list"
-   script: "main.min.js"
-   stylesheet: "main.min.css"
-
- - name: "luxon"
-   version: 4.2.0
-   src: "htmlwidgets/lib/luxon"
-   script: "main.min.js"
-
- - name: "moment"
-   version: 4.2.0
-   src: "htmlwidgets/lib/moment"
-   script: "main.min.js"
-
- - name: "moment-timezone"
-   version: 4.2.0
-   src: "htmlwidgets/lib/moment-timezone"
-   script: "main.min.js"
-
- - name: "rrule"
-   version: 4.2.0
-   src: "htmlwidgets/lib/rrule"
-   script: "main.min.js"
-
- - name: "timegrid"
-   version: 4.2.0
-   src: "htmlwidgets/lib/timegrid"
-   script: "main.min.js"
-   stylesheet: "main.min.css"
-
  - name: "core"
    version: 4.2.0
    src: "htmlwidgets/lib/core"
    script:
-     - "main.min.js"
-     - "locals-all.min.js"
-   stylesheet: "main.min.css"
+     - "main.js"
+     - "locals-all.js"
+   stylesheet: "main.css"
+
+ - name: "bootstrap"
+   version: 4.2.0
+   src: "htmlwidgets/lib/bootstrap"
+   script: "main.js"
+   stylesheet: "main.css"
+
+ - name: "daygrid"
+   version: 4.2.0
+   src: "htmlwidgets/lib/daygrid"
+   script: "main.js"
+   stylesheet: "main.css"
+
+ - name: "google-calendar"
+   version: 4.2.0
+   src: "htmlwidgets/lib/google-calendar"
+   script: "main.js"
+
+ - name: "interaction"
+   version: 4.2.0
+   src: "htmlwidgets/lib/interaction"
+   script: "main.js"
+
+ - name: "list"
+   version: 4.2.0
+   src: "htmlwidgets/lib/list"
+   script: "main.js"
+   stylesheet: "main.css"
+
+ - name: "luxon"
+   version: 4.2.0
+   src: "htmlwidgets/lib/luxon"
+   script: "main.js"
+
+ - name: "moment"
+   version: 4.2.0
+   src: "htmlwidgets/lib/moment"
+   script: "main.js"
+
+ - name: "moment-timezone"
+   version: 4.2.0
+   src: "htmlwidgets/lib/moment-timezone"
+   script: "main.js"
+
+ - name: "rrule"
+   version: 4.2.0
+   src: "htmlwidgets/lib/rrule"
+   script: "main.js"
+
+ - name: "timegrid"
+   version: 4.2.0
+   src: "htmlwidgets/lib/timegrid"
+   script: "main.js"
+   stylesheet: "main.css"
+

@@ -12,8 +12,13 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
-        // TODO: code to render the widget, e.g.
-        el.innerText = x.message;
+        var opts = x
+
+        console.log(opts)
+        console.log(el)
+
+
+
 
       },
 

@@ -5,17 +5,17 @@
 #' @import htmlwidgets
 #'
 #' @export
-fullercalendar <- function(message, width = NULL, height = NULL, elementId = NULL) {
+fullercalendar <- function(data, width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
-  x = list(
-    message = message
+  settings = list(
+    events = data
   )
 
   # create widget
   htmlwidgets::createWidget(
     name = 'fullercalendar',
-    x,
+    x = settings,
     width = width,
     height = height,
     package = 'fullercalendar',
