@@ -5,17 +5,27 @@
 #' @import htmlwidgets
 #'
 #' @export
-fullercalendar <- function(data, width = NULL, height = NULL, elementId = NULL) {
+fullercalendar <- function(events = NULL,
+                           settings = list(),
+                           width = NULL,
+                           height = NULL,
+                           elementId = NULL) {
 
-  # forward options using x
-  settings = list(
-    events = data
+
+
+
+
+  full_opts = list(
+    events = events,
+    settings = settings
   )
+  
+  attr(full_opts, 'TOJSON_ARGS') <- list(dataframe = "rows")
 
   # create widget
   htmlwidgets::createWidget(
     name = 'fullercalendar',
-    x = settings,
+    x = full_opts,
     width = width,
     height = height,
     package = 'fullercalendar',

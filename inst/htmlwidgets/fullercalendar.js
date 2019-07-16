@@ -13,11 +13,27 @@ HTMLWidgets.widget({
       renderValue: function(x) {
 
         var opts = x
+        window.fc_opts = opts
 
         console.log(opts)
         console.log(el)
 
+        var calendar = new FullCalendar.Calendar(el, {
+          plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
+          defaultView: 'timeGridWeek',
+      //    defaultDate: '2019-04-07',
+      //		allDaySlot: false,
+      		editable: true,
+      //    header: {
+      //      left: 'prev,next today',
+      //      center: 'title',
+      //      right: 'timeGridWeek'
+      //    },
+      		droppable: true,
+      		events: 'https://fullcalendar.io/demo-events.json'
+        });
 
+        calendar.render();
 
 
       },
