@@ -1,12 +1,12 @@
 Package: fullercalendar
 Type: Package
-Title: What the Package Does (Title Case)
+Title: fullercalendar
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: person("Ari", "Angelo",      email = "hello@ari.nz",      role = c("cre", "aut")
+Maintainer: Ari Angelo <hello@ari.nz>
+Description: This package uses the fullcalendar js library to render
+    calendar widgets. 
+License: file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: 
