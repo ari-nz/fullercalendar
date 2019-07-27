@@ -2,7 +2,7 @@ Package: fullercalendar
 Type: Package
 Title: fullercalendar
 Version: 0.1.0
-Author: person("Ari", "Angelo",      email = "hello@ari.nz",      role = c("cre", "aut")
+Author: person("Ari", "Angelo",      email = "hello@ari.nz",      role = c("cre", "aut"))
 Maintainer: Ari Angelo <hello@ari.nz>
 Description: This package uses the fullcalendar js library to render
     calendar widgets. 
