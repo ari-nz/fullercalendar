@@ -2,11 +2,32 @@
 % Please edit documentation in R/fullercalendar.R
 \name{fullercalendar}
 \alias{fullercalendar}
-\title{<Add Title>}
+\title{Create a fullcalendar visualisation}
 \usage{
 fullercalendar(events = NULL, settings = list(), width = NULL,
   height = NULL, elementId = NULL)
 }
+\arguments{
+\item{events}{A list of events, or a URL containing JSON data}
+
+\item{settings}{settings to pass to the fullcalendar on initialisation}
+
+\item{width}{Numeric table width}
+
+\item{height}{Numeric table height}
+
+\item{elementId}{HTML element ID if needed.}
+
+\item{...}{Other arguments (not currently utilised)}
+}
 \description{
-<Add Description>
+Uses Fullcalendar.js
+}
+\examples{
+
+fullercalendar()
+
+}
+\seealso{
+\href{https://fullcalendar.io/}{https://fullcalendar.io/}
 }

@@ -1,8 +1,20 @@
-#' <Add Title>
+#' Create a fullcalendar visualisation
 #'
-#' <Add Description>
+#' Uses Fullcalendar.js
+#'
+#' @seealso \href{https://fullcalendar.io/}{https://fullcalendar.io/}
+#'
+#' @param events A list of events, or a URL containing JSON data
+#' @param settings settings to pass to the fullcalendar on initialisation
+#' @param width Numeric table width
+#' @param height Numeric table height
+#' @param elementId HTML element ID if needed.
+#' @param ... Other arguments (not currently utilised)
 #'
 #' @import htmlwidgets
+#' @examples
+#'
+#' fullercalendar()
 #'
 #' @export
 fullercalendar <- function(events = NULL,
@@ -50,6 +62,12 @@ fullercalendar <- function(events = NULL,
 fullercalendarOutput <- function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'fullercalendar', width, height, package = 'fullercalendar')
 }
+
+
+
+
+
+
 
 #' @rdname fullercalendar-shiny
 #' @export
