@@ -8,16 +8,33 @@ HTMLWidgets.widget({
 
     // TODO: define shared variables for this instance
 
+
+
+    var elementId = el.id;
+    var container = document.getElementById(elementId);
+    var calendar = new FullCalendar.Calendar(container, {
+        plugins: [ 'interaction', 'dayGrid', 'timeGrid' ]
+    })
+
+
+
     return {
 
 
     renderValue: function(x) {
+
         var opts = x
         window.fc_opts = opts
 
         console.log(opts)
-        console.log(el)
+        console.log(elementId)
+        console.log(calendar)
 
+        calendar.changeView('timeGridWeek');
+        calendar.setOption('editable'    , true);
+        calendar.setOption('dropppable'  , true);
+        calendar.addEventSource('https://fullcalendar.io/demo-events.json');
+/*
         var calendar = new FullCalendar.Calendar(el, {
           plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
           defaultView: 'timeGridWeek',
@@ -32,6 +49,7 @@ HTMLWidgets.widget({
       		droppable: true,
       		events: 'https://fullcalendar.io/demo-events.json'
         });
+        */
 
         calendar.render();
 
