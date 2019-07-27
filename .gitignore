@@ -3,4 +3,4 @@
 .RData
 .Ruserdata
 .bowerrc
-.Rbuildignore
+sample.R
