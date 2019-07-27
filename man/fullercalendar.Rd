@@ -4,8 +4,8 @@
 \alias{fullercalendar}
 \title{<Add Title>}
 \usage{
-fullercalendar(message, width = NULL, height = NULL,
-  elementId = NULL)
+fullercalendar(events = NULL, settings = list(), width = NULL,
+  height = NULL, elementId = NULL)
 }
 \description{
 <Add Description>
