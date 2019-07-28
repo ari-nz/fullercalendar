@@ -5,7 +5,7 @@ dependencies:
    src: "htmlwidgets/lib/core"
    script:
      - "main.js"
-     - "locals-all.js"
+     - "locales-all.js"
    stylesheet: "main.css"
 
  - name: "bootstrap"
