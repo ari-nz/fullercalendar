@@ -8,13 +8,13 @@ dependencies:
      - "locales-all.js"
    stylesheet: "main.css"
 
- - name: "bootstrap"
-   version: 4.2.0
-   src: "htmlwidgets/lib/bootstrap"
-   script: "main.js"
-   stylesheet:
-      - "main.css"
-      - "bootstrap.min.css"
+# - name: "bootstrap"
+#   version: 4.2.0
+#   src: "htmlwidgets/lib/bootstrap"
+#   script: "main.js"
+#   stylesheet:
+#      - "main.css"
+#      - "bootstrap.min.css"
 
 
  - name: "daygrid"

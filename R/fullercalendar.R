@@ -13,9 +13,9 @@
 #'
 #' @import htmlwidgets
 #' @examples
-#'
+#' \donttest{
 #' fullercalendar()
-#'
+#' }
 #' @export
 fullercalendar <- function(events = NULL,
                            settings = list(),
