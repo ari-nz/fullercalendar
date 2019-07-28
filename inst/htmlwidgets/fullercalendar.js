@@ -13,7 +13,31 @@ HTMLWidgets.widget({
     var elementId = el.id;
     var container = document.getElementById(elementId);
     var calendar = new FullCalendar.Calendar(container, {
-        plugins: [ 'interaction', 'dayGrid', 'timeGrid' ]
+        plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
+        selectable: true,
+        selectMirror: true,
+        select: function(arg) {
+          var title = prompt('Event Title:');
+          if (title) {
+            calendar.addEvent({
+              title: title,
+              start: arg.start,
+              end: arg.end,
+              allDay: arg.allDay
+            })
+          }
+          calendar.unselect()
+        },
+        eventClick: function(info) {
+          alert('Event: ' + info.event.title);
+          alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+          alert('View: ' + info.view.type);
+
+          // change the border color just for fun
+          info.el.style.borderColor = 'red';
+        },
+
+        eventLimit: true, // allow "more" link when too many events
     })
 
 
@@ -25,13 +49,12 @@ HTMLWidgets.widget({
 
         if (!initialized) {
           initialized = true;
+        }
 
-          if (HTMLWidgets.shinyMode) {
-            timeline.on('select', function (properties) {
-              Shiny.onInputChange(elementId + "_selected", properties.items);
-            });
-            Shiny.onInputChange(elementId + "_selected", timeline.getSelection());
-          }
+        if (HTMLWidgets.shinyMode) {
+          Shiny.onInputChange(elementId + "_events", calendar.getEvents());
+
+          Shiny.onInputChange(elementId + "_state", calendar.state);
         }
 
 
@@ -68,6 +91,10 @@ HTMLWidgets.widget({
         });
         */
 
+
+
+
+        el.fullobject = calendar;
         calendar.render();
 
 
