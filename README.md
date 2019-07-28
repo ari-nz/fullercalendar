@@ -36,3 +36,23 @@ fullercalendar()
 
 ![Example display of fullcalendar
 output](man/figures/README-example-1.png)
+
+## Shiny Example
+
+``` r
+library(shiny)
+library(fullercalendar)
+
+ui <- fluidPage(
+  fullercalendarOutput('mycal'),
+)
+
+server <- function(input, output, session) {
+  output$mycal = renderFullercalendar({
+    fc = fullercalendar()
+    fc
+  })
+}
+
+shinyApp(ui, server)
+```
