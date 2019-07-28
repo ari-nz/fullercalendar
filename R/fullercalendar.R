@@ -30,6 +30,8 @@ fullercalendar <- function(events = NULL,
 
   attr(full_opts, 'TOJSON_ARGS') <- list(dataframe = "rows")
 
+  message('full_opts - ', Sys.time())
+  print(full_opts)
 
   # create widget
   htmlwidgets::createWidget(

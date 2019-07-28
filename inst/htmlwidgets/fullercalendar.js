@@ -9,7 +9,7 @@ HTMLWidgets.widget({
     // TODO: define shared variables for this instance
 
 
-
+    var initialized = false;
     var elementId = el.id;
     var container = document.getElementById(elementId);
     var calendar = new FullCalendar.Calendar(container, {
@@ -23,6 +23,19 @@ HTMLWidgets.widget({
 
     renderValue: function(x) {
 
+        if (!initialized) {
+          initialized = true;
+
+          if (HTMLWidgets.shinyMode) {
+            timeline.on('select', function (properties) {
+              Shiny.onInputChange(elementId + "_selected", properties.items);
+            });
+            Shiny.onInputChange(elementId + "_selected", timeline.getSelection());
+          }
+        }
+
+
+
         var opts = x
         window.fc_opts = opts
 
@@ -34,6 +47,10 @@ HTMLWidgets.widget({
         calendar.setOption('editable'    , true);
         calendar.setOption('dropppable'  , true);
         calendar.addEventSource('https://fullcalendar.io/demo-events.json');
+
+
+        console.log(calendar)
+
 /*
         var calendar = new FullCalendar.Calendar(el, {
           plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],

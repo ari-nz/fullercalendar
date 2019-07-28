@@ -2,7 +2,9 @@ library(shiny)
 library(fullercalendar)
 
 ui <- fluidPage(
-  fullercalendarOutput('mycal')
+  actionButton('tor', 'To R'),
+  fullercalendarOutput('mycal'),
+  verbatimTextOutput('calinfo')
 )
 
 server <- function(input, output, session) {
@@ -10,6 +12,19 @@ server <- function(input, output, session) {
     fc = fullercalendar()
     fc
   })
+
+
+  observeEvent(input$tor,{
+    browser()
+
+
+    fc_data = fc2r(output$mycal)
+
+    output$calinfo <- renderPrint({ fc_data })
+  })
+
+
+
 
 }
 
