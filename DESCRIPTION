@@ -20,3 +20,5 @@ RoxygenNote: 6.1.1
 Imports: 
     htmlwidgets,
     magrittr
+Depends: 
+    R (>= 3.2)

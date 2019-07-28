@@ -6,3 +6,4 @@
 ^sample\.R$
 ^\.bowerrc$
 ^README\.Rmd$
+^\.covrignore$
