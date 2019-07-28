@@ -5,3 +5,4 @@
 ^app\.R$
 ^sample\.R$
 ^\.bowerrc$
+^README\.Rmd$

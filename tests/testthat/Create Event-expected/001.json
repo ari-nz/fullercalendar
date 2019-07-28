@@ -1,0 +1,27 @@
+{
+  "input": {
+    "tor": 0
+  },
+  "output": {
+    "mycal": {
+      "x": {
+        "events": null,
+        "settings": [
+
+        ]
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+
+      ]
+    }
+  },
+  "export": {
+
+  }
+}
