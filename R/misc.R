@@ -1,13 +1,13 @@
-#' Title
+#' Convert fullcalendar JS data to R
 #'
-#' @param fc
+#' @param fc fullercalendar object
 #'
 #' @return
+#' A data frame?
 #' @export
 #'
-#' @examples
 fc2r <- function(fc) {
 
-browser()
+  browser()
 
 }

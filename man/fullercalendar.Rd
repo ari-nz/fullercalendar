@@ -24,9 +24,9 @@ fullercalendar(events = NULL, settings = list(), width = NULL,
 Uses Fullcalendar.js
 }
 \examples{
-
+\donttest{
 fullercalendar()
-
+}
 }
 \seealso{
 \href{https://fullcalendar.io/}{https://fullcalendar.io/}

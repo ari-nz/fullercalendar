@@ -2,13 +2,16 @@
 % Please edit documentation in R/misc.R
 \name{fc2r}
 \alias{fc2r}
-\title{Title}
+\title{Convert fullcalendar JS data to R}
 \usage{
 fc2r(fc)
 }
 \arguments{
-\item{fc}{}
+\item{fc}{fullercalendar object}
+}
+\value{
+A data frame?
 }
 \description{
-Title
+Convert fullcalendar JS data to R
 }
