@@ -2,11 +2,39 @@
 % Please edit documentation in R/fullercalendar.R
 \name{fullercalendar}
 \alias{fullercalendar}
-\title{<Add Title>}
+\title{Display a FullCalendar widget}
 \usage{
-fullercalendar(message, width = NULL, height = NULL,
-  elementId = NULL)
+fullercalendar(events = NULL, settings = list(), width = NULL,
+  height = NULL, elementId = NULL)
+}
+\arguments{
+\item{events}{a data frame with one row per event where the columns needs
+to follow the naming conventions by FullCalendar shown here: https://fullcalendar.io/docs/event-object.
+This data frame will then be translated into a json array by means of \code{jsonlite::toJSON}. The required
+columns are \code{title}, a string, and \code{start} as string parse-able as a date, for example, "2017-02-28".}
+
+\item{settings}{A list of settings for the FullCalendar.
+See here for the available settings: https://fullcalendar.io/docs/display/ .}
+
+\item{width}{Fixed width for widget (in css units). The default is NULL, which results in intelligent automatic sizing based on the widget's container.}
+
+\item{height}{Fixed height for widget (in css units). The default is NULL, which results in intelligent automatic sizing based on the widget's container.}
+
+\item{elementId}{Use an explicit element ID for the widget (rather than an automatically generated one). Useful if you have other JavaScript that needs to explicitly discover and interact with a specific widget instance.}
 }
 \description{
-<Add Description>
+This function creates a FullCalendar htmlwidget that will show up
+in the viewer pane, if you're running RStudio, or in your Rmarkdown
+document.
+}
+\examples{
+now = Sys.time()
+today = Sys.Date()
+events = data.frame(title = paste("Event", 1:4),
+                  start  = c(isodate(today+(-1:1)), isotime(now)),
+                  end    = c(isodate(today+(0:2) ), isotime(now + 4800)),
+                  color  = c("red", "#3788d8", "green", "blue"))
+fullercalendar(events =  events)
+
+
 }

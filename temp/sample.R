@@ -7,12 +7,9 @@ library(tibble)
 
 now = Sys.time()
 today = Sys.Date()
-isotime<-function(time){
-  strftime(time , "%Y-%m-%dT%H:%M:%S%z")
-}
 data = data.frame(title = paste("Event", 1:4),
-                 start  = c(as.character(today+(-1:1)), isotime(now)),
-                 end    = c(as.character(today+(0:2) ), isotime(now + 4800)),
+                 start  = c(isodate(today+(-1:1)), isotime(now)),
+                 end    = c(isodate(today+(0:2) ), isotime(now + 4800)),
                  color  = c("red", "#3788d8", "green", "blue"))
 
 
