@@ -1,6 +1,6 @@
 Package: fullercalendar
 Type: Package
-Title: fullercalendar
+Title: Interface to the 'FullCalendar.js' Library
 Version: 0.2.0
 Authors@R: c(
         person("Ari", "Angelo",      email = "hello@ari.nz",      role = c("cre", "aut")),
@@ -13,12 +13,16 @@ Description: This package uses the FullCalendar JavaScript library to render
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true
-Suggests: 
-    testthat (>= 2.1.0),
-    covr,
-    spelling
-RoxygenNote: 6.1.1
 Imports: 
-    magrittr,
-    htmlwidgets
+    htmlwidgets,
+    magrittr
+Suggests: 
+    covr,
+    knitr,
+    rmarkdown,
+    rstudioapi (>= 0.6),
+    shiny,
+    spelling,
+    testthat (>= 2.1.0)
+RoxygenNote: 6.1.1
 Language: en-US
