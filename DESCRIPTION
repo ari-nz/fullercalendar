@@ -8,7 +8,7 @@ Authors@R: c(
         person("Fullcalendar contributors", role = c("ctb", "cph"), comment = "Fullcalendar library")
         )
 Maintainer: Ari Angelo <hello@ari.nz>
-Description: This package uses the fullcalendar js library to render
+Description: This package uses the FullCalendar JavaScript library to render
     calendar widgets. 
 License: file LICENSE
 Encoding: UTF-8
@@ -19,5 +19,6 @@ Suggests:
     spelling
 RoxygenNote: 6.1.1
 Imports: 
-    magrittr
-Language: en-GB
+    magrittr,
+    htmlwidgets
+Language: en-US

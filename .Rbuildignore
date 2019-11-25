@@ -2,8 +2,6 @@
 ^\.Rproj\.user$
 ^\.travis\.yml$
 ^codecov\.yml$
-^app\.R$
-^sample\.R$
-^\.bowerrc$
 ^README\.Rmd$
 ^\.covrignore$
+^temp$
