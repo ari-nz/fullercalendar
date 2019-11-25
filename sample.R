@@ -1,8 +1,72 @@
 
 
+library(rhandsontable)
 library(fullercalendar)
+library(shiny)
+library(tibble)
+
+now = Sys.time()
+today = Sys.Date()
+isotime<-function(time){
+  strftime(time , "%Y-%m-%dT%H:%M:%S%z")
+}
 data = data.frame(title = paste("Event", 1:4),
-                 start = c("2019-07-11", "2019-07-13", "2019-07-15","2019-07-18T08:30+12:00"),
-                 end = c("2019-07-12", "2019-07-14", "2019-07-17", "2019-07-18T12:30+12:00"),
-                 color = c("red", "blue", "green", "blue"))
+                 start  = c(as.character(today+(-1:1)), isotime(now)),
+                 end    = c(as.character(today+(0:2) ), isotime(now + 4800)),
+                 color  = c("red", "#3788d8", "green", "blue"))
+
+
 fullercalendar(events =  data)
+
+
+
+
+
+ui_1 <- fluidPage(
+  fullercalendar(events = data,width = '100%')
+)
+
+server_1 <- function(input, output, session) {
+
+}
+
+runApp(list(ui =ui_1,server= server_1), launch.browser = TRUE)
+
+
+
+
+
+
+ui_2 <- fluidPage(
+  fluidRow(
+    column(6,fullercalendar(events = data,width = '100%')),
+    column(6,fullercalendarOutput('renderCal',width = '100%'))
+  )
+)
+
+server_2 <- function(input, output, session) {
+  output$renderCal = renderFullercalendar(
+    fullercalendar(events = data)
+  )
+}
+
+shinyApp(ui_2, server_2)
+
+
+
+
+
+
+
+
+ui_3 <- fluidPage(
+           fullercalendarOutput('renderCal',width = '100%')
+)
+
+server_3 <- function(input, output, session) {
+  output$renderCal = renderFullercalendar(
+    fullercalendar(events = data)
+  )
+}
+
+shinyApp(ui_3, server_3)
