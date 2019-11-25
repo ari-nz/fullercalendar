@@ -20,7 +20,7 @@ fullercalendar <- function(events = NULL,
 
 
   # create widget
-  htmlwidgets::createWidget(
+  fc = htmlwidgets::createWidget(
     name = 'fullercalendar',
     x = full_opts,
     width = width,
@@ -28,6 +28,9 @@ fullercalendar <- function(events = NULL,
     package = 'fullercalendar',
     elementId = elementId
   )
+
+  fc
+
 }
 
 #' Shiny bindings for fullercalendar
@@ -47,7 +50,7 @@ fullercalendar <- function(events = NULL,
 #' @name fullercalendar-shiny
 #'
 #' @export
-fullercalendarOutput <- function(outputId, width = '100%', height = '400px'){
+fullercalendarOutput <- function(outputId, width = '100%', height = '100%'){
   htmlwidgets::shinyWidgetOutput(outputId, 'fullercalendar', width, height, package = 'fullercalendar')
 }
 
