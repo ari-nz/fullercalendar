@@ -1,7 +1,7 @@
 Package: fullercalendar
 Type: Package
 Title: fullercalendar
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
         person("Ari", "Angelo",      email = "hello@ari.nz",      role = c("cre", "aut")),
         person("Adam", "Shaw", role = c("ctb", "cph"), comment = "Fullcalendar library"),
