@@ -10,5 +10,10 @@ License: file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    testthat
+    testthat,
+    covr,
+    spelling
 RoxygenNote: 6.1.1
+Imports: 
+    magrittr
+Language: en-GB
