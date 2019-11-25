@@ -6,7 +6,7 @@
 \alias{renderFullercalendar}
 \title{Shiny bindings for fullercalendar}
 \usage{
-fullercalendarOutput(outputId, width = "100\%", height = "400px")
+fullercalendarOutput(outputId, width = "100\%", height = "100\%")
 
 renderFullercalendar(expr, env = parent.frame(), quoted = FALSE)
 }

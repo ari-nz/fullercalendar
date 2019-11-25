@@ -1,10 +1,30 @@
-#' <Add Title>
+#' Display a FullCalendar widget
 #'
-#' <Add Description>
+#' This function creates a FullCalendar htmlwidget that will show up
+#' in the viewer pane, if you're running RStudio, or in your Rmarkdown
+#' document.
 #'
-#' @import htmlwidgets
+#' @param events a data frame with one row per event where the columns needs
+#'   to follow the naming conventions by FullCalendar shown here: https://fullcalendar.io/docs/event-object.
+#'   This data frame will then be translated into a json array by means of \code{jsonlite::toJSON}. The required
+#'   columns are \code{title}, a string, and \code{start} as string parse-able as a date, for example, "2017-02-28".
+#' @param settings A list of settings for the FullCalendar.
+#'   See here for the available settings: https://fullcalendar.io/docs/display/ .
+#' @param width Fixed width for widget (in css units). The default is NULL, which results in intelligent automatic sizing based on the widget's container.
+#' @param height Fixed height for widget (in css units). The default is NULL, which results in intelligent automatic sizing based on the widget's container.
+#' @param elementId Use an explicit element ID for the widget (rather than an automatically generated one). Useful if you have other JavaScript that needs to explicitly discover and interact with a specific widget instance.
 #'
 #' @export
+#' @examples
+#' now = Sys.time()
+#' today = Sys.Date()
+#' events = data.frame(title = paste("Event", 1:4),
+#'                   start  = c(isodate(today+(-1:1)), isotime(now)),
+#'                   end    = c(isodate(today+(0:2) ), isotime(now + 4800)),
+#'                   color  = c("red", "#3788d8", "green", "blue"))
+#' fullercalendar(events =  events)
+#'
+#'
 fullercalendar <- function(events = NULL,
                            settings = list(),
                            width = NULL,
