@@ -1,22 +1,29 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 # fullercalendar
 
 <!-- badges: start -->
-
-[![Travis build
-status](https://travis-ci.org/ari-nz/fullercalendar.svg?branch=master)](https://travis-ci.org/ari-nz/fullercalendar)
-[![Codecov test
-coverage](https://codecov.io/gh/ari-nz/fullercalendar/branch/master/graph/badge.svg)](https://codecov.io/gh/ari-nz/fullercalendar?branch=master)
+[![Travis build status](https://travis-ci.org/ari-nz/fullercalendar.svg?branch=master)](https://travis-ci.org/ari-nz/fullercalendar)
+[![Codecov test coverage](https://codecov.io/gh/ari-nz/fullercalendar/branch/master/graph/badge.svg)](https://codecov.io/gh/ari-nz/fullercalendar?branch=master)
 <!-- badges: end -->
 
-The goal of fullercalendar is to …
+The goal of fullercalendar is to ...
 
 ## Installation
 
-You cannot yet install the released version of fullercalendar from
-[CRAN](https://CRAN.R-project.org), but when you can you can do so with:
+You cannot yet install the released version of fullercalendar from [CRAN](https://CRAN.R-project.org), but when you can you can do so with:
 
 ``` r
 install.packages("fullercalendar")
@@ -28,14 +35,16 @@ And the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("ari-nz/fullercalendar")
 ```
-
 ## Example
 
-``` r
+
+```{r example}
 library(fullercalendar)
+
 ```
 
-``` r
+
+```{r basic-usage}
 now = Sys.time()
 today = Sys.Date()
 events = data.frame(title = paste("Event", 1:4),
@@ -44,14 +53,17 @@ events = data.frame(title = paste("Event", 1:4),
                  color  = c("red", "#3788d8", "green", "blue"))
 
 head(events)
-#>     title                    start                      end   color
-#> 1 Event 1               2019-11-24               2019-11-25     red
-#> 2 Event 2               2019-11-25               2019-11-26 #3788d8
-#> 3 Event 3               2019-11-26               2019-11-27   green
-#> 4 Event 4 2019-11-25T15:07:19+1300 2019-11-25T16:27:19+1300    blue
+
+
+```
+
+```{r display, eval=FALSE, echo=FALSE}
+fullercalendar(events)
 ```
 
 ![man/figures/README-display-1.png](man/figures/README-display-1.png)
+
+
 
 ## Shiny Example
 
