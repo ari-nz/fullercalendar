@@ -4,10 +4,12 @@
 \alias{isotime}
 \title{Turn POSIXct object to an ISO formatted time needed for the FullCalendar js to recognise}
 \usage{
-isotime(time)
+isotime(time, tz = attr(time, "tzone"))
 }
 \arguments{
 \item{time}{A POSIXct valid time object}
+
+\item{tz}{A time zone string. By default will try to get it from the Posixct object, else will set to system locale}
 }
 \value{
 a string following the pattern \code{\%Y-\%m-\%dT\%H:\%M:\%S\%z}.
