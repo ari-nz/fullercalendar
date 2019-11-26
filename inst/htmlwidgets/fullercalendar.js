@@ -87,22 +87,21 @@ HTMLWidgets.widget({
                 storedEvents.map(function(ev) {
                   return {
                     allDay             : ev.allDay
+                    , title              : ev.title
+                    , start              : ev.start
+                    , end                : ev.end
                     , allow              : ev.allow
+                    , id                 : ev.id
                     , backgroundColor    : ev.backgroundColor
                     , borderColor        : ev.borderColor
                     , classNames         : ev.classNames
                     , constraint         : ev.constraint
                     , durationEditable   : ev.durationEditable
-                    , end                : ev.end
-                    , extendedProps      : ev.extendedProps
                     , groupId            : ev.groupId
-                    , id                 : ev.id
                     , overlap            : ev.overlap
                     , rendering          : ev.rendering
-                    , start              : ev.start
                     , startEditable      : ev.startEditable
                     , textColor          : ev.textColor
-                    , title              : ev.title
                     , url                : ev.url
 
                   }
