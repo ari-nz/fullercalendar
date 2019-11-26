@@ -5,3 +5,4 @@
 ^README\.Rmd$
 ^\.covrignore$
 ^temp$
+^LICENSE\.md$

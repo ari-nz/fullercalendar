@@ -10,7 +10,7 @@ Authors@R: c(
 Maintainer: Ari Angelo <hello@ari.nz>
 Description: This package uses the FullCalendar JavaScript library to render
     calendar widgets. 
-License: file LICENSE
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
