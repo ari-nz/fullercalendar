@@ -65,7 +65,7 @@ randomevents<-function(){
 
 
 
-  nevents = max(3, rpois(1,7))
+  nevents = max(3, stats::rpois(1,7))
 
   now = Sys.time()
   today = Sys.Date()
@@ -73,7 +73,7 @@ randomevents<-function(){
   lengths_opts = c(0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 4)
   lengths_prob = unit_vector( 1/lengths_opts)
 
-  event_starts = now + runif(nevents, -3.5, 3.5) * 86400
+  event_starts = now + stats::runif(nevents, -3.5, 3.5) * 86400
   event_starts = sort(round_time(event_starts, 15))
   event_ends = event_starts + sample(lengths_opts, prob = lengths_prob, size = nevents, replace = TRUE) * 3600
 
@@ -85,7 +85,7 @@ randomevents<-function(){
   )
 
   ## Do some colour correction for the text
-  rgb_cols = col2rgb(events$color)
+  rgb_cols = grDevices::col2rgb(events$color)
   black_contrast = (299*(255-rgb_cols[1,]) + 587*(255-rgb_cols[2,]) + 114*(255-rgb_cols[3,])) / 1000
   white_contrast = (299*rgb_cols[1,] + 587*rgb_cols[2,] + 114*rgb_cols[3,]) / 1000
   text_col = ifelse(black_contrast <= white_contrast, 'black', 'white')

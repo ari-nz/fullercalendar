@@ -2,7 +2,9 @@
 
 
   # Unbox the events when droped.
-  shiny::registerInputHandler("fc_events", function(data, ...) {
+  try({
+    shiny::registerInputHandler("fc_events", function(data, ...) {
     jsonlite::fromJSON(data)
+  })
   })
 }

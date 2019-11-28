@@ -14,16 +14,15 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    data.table (>= 1.8.2),
-    fasttime,
     htmlwidgets,
-    magrittr
+    jsonlite,
+    magrittr,
+    shiny
 Suggests: 
     covr,
     knitr,
     rmarkdown,
     rstudioapi (>= 0.6),
-    shiny,
     spelling,
     testthat (>= 2.1.0)
 RoxygenNote: 6.1.1
