@@ -36,6 +36,8 @@ HTMLWidgets.widget({
         // Clear calendar each time the process goes on.
         calendar.removeAllEvents();
 
+
+
         // Add all events
         if(opts.events !== null){
          for(var i = 0; i < opts.events.length; i++){
@@ -44,15 +46,24 @@ HTMLWidgets.widget({
         }
 
 
-        //Set settings as defined in R's ... construct
+
+        // Set settings as defined in R's ... construct
         var obj = opts.settings
-        var objName = "opts.settings"
         for (var i in obj) {
-          // obj.hasOwnProperty() is used to filter out properties from the object's prototype chain
           if (obj.hasOwnProperty(i)) {
             calendar.setOption(i, obj[i])
           }
+        };
+
+        // Change settings that cannot be modified dynamically
+        if(calendar.getOption('defaultView') !== opts.defaultView){
+          calendar.changeView(opts.defaultView)
+        };
+
+        if(calendar.getOption('defaultDate') !== opts.defaultDate){
+          calendar.gotoDate(opts.defaultDate)
         }
+
 
 
 
@@ -62,9 +73,6 @@ HTMLWidgets.widget({
         // we won't be implementing a resize function
       },
 
-      changeView : function(params){
-        calendar.changeView(params.viewName);
-      }
 
     };
   }
