@@ -7,10 +7,11 @@ library(tibble)
 
 now = Sys.time()
 today = Sys.Date()
-data = data.frame(title = paste("Event", 1:4),
+data = data.frame(title = paste("Event", 0:3),
                  start  = c(isodate(today+(-1:1)), isotime(now)),
                  end    = c(isodate(today+(0:2) ), isotime(now + 4800)),
-                 color  = c("red", "#3788d8", "green", "blue"))
+                 color  = c("red", "#3788d8", "green", "blue"),
+                 stringsAsFactors = FALSE)
 
 
 fullercalendar(events =  data)

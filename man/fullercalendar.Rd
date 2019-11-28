@@ -4,8 +4,9 @@
 \alias{fullercalendar}
 \title{Display a FullCalendar widget}
 \usage{
-fullercalendar(events = NULL, settings = list(), width = NULL,
-  height = NULL, elementId = NULL)
+fullercalendar(events = list(), ..., plugins = c("interaction",
+  "dayGrid", "timeGrid"), width = NULL, height = NULL,
+  elementId = NULL, defaultView = "dayGridMonth", defaultDate = NULL)
 }
 \arguments{
 \item{events}{a data frame with one row per event where the columns needs
@@ -13,14 +14,19 @@ to follow the naming conventions by FullCalendar shown here: https://fullcalenda
 This data frame will then be translated into a json array by means of \code{jsonlite::toJSON}. The required
 columns are \code{title}, a string, and \code{start} as string parse-able as a date, for example, "2017-02-28".}
 
-\item{settings}{A list of settings for the FullCalendar.
-See here for the available settings: https://fullcalendar.io/docs/display/ .}
+\item{...}{Other options which can be set specifically, that are not specified here: https://fullcalendar.io/docs/dynamic-options}
+
+\item{plugins}{List of plugins to use when initialising the calendar}
 
 \item{width}{Fixed width for widget (in css units). The default is NULL, which results in intelligent automatic sizing based on the widget's container.}
 
 \item{height}{Fixed height for widget (in css units). The default is NULL, which results in intelligent automatic sizing based on the widget's container.}
 
 \item{elementId}{Use an explicit element ID for the widget (rather than an automatically generated one). Useful if you have other JavaScript that needs to explicitly discover and interact with a specific widget instance.}
+
+\item{defaultView}{A name of any of the available views, such as 'dayGridWeek', 'timeGridDay', 'listWeek'}
+
+\item{defaultDate}{The initial date displayed when the calendar first loads. Date When not specified, this value defaults to the current date. This value can be anything that can parse into a Date, including an ISO8601 date string like "2014-02-01".}
 }
 \description{
 This function creates a FullCalendar htmlwidget that will show up
@@ -28,13 +34,22 @@ in the viewer pane, if you're running RStudio, or in your Rmarkdown
 document.
 }
 \examples{
-now = Sys.time()
-today = Sys.Date()
-events = data.frame(title = paste("Event", 1:4),
-                  start  = c(isodate(today+(-1:1)), isotime(now)),
-                  end    = c(isodate(today+(0:2) ), isotime(now + 4800)),
-                  color  = c("red", "#3788d8", "green", "blue"))
-fullercalendar(events =  events)
+fullercalendar(events =  demoevents())
 
+\donttest{
+fullercalendar(demoevents(),
+               defaultView = "dayGridWeek",
+               weekends = TRUE,
+               hiddenDays= c(2, 6),
+               slotDuration = '00:10:00',
+               firstDay = 1,
+               weekNumbers = TRUE,
+               selectable = TRUE,
+               selectMirror = TRUE,
+               editable = TRUE,
+               dropable = TRUE,
+
+)
+}
 
 }

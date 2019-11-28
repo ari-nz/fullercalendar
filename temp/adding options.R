@@ -10,13 +10,13 @@ isotime<-function(time){
 }
 data = data.frame(title = paste("Event", 1:4),
                   start  = c(as.character(today+(-1:1)), isotime(now)),
-                  end    = c(as.character(today+(0:2) ), isotime(now + 4800)),
+                  end    = c(as.character(today+(0:1) ),NA, isotime(now + 4800)),
                   color  = c("red", "#3788d8", "green", "blue"))
 
 
 
 
-# fc = fullercalendar(events =  data)
+fc = fullercalendar(events =  data)
 
 
 
@@ -24,23 +24,30 @@ data = data.frame(title = paste("Event", 1:4),
 
 fc_to_r<-function(...){
   dots = c(...)
-  do.call(rbind, jsonlite::parse_json(dots))
+  bound = do.call(rbind, jsonlite::parse_json(dots))
+  browser()
+  bound
 }
 
 
 library(shiny)
 
 ui <- fluidPage(
-  actionButton('btn','lbl'),
- fullercalendarOutput('test'),
- textOutput("df")
+ fluidRow(
+  actionButton('btn','lbl')
+ ),
+ fluidRow(
+  fullercalendarOutput('test', height = '400px'),
+  DT::dataTableOutput("df")
+ )
 )
 
 server <- function(input, output, session) {
-    output$test =  renderFullercalendar(fullercalendar(data))
+  output$test =  renderFullercalendar(fullercalendar(data))
+
   observeEvent(input$btn, {
     df = fc_to_r(input$test)
-    output$df = renderPrint(df)
+    output$df = DT::renderDataTable(df)
   })
 }
 
