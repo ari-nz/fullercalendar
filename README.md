@@ -38,19 +38,13 @@ library(fullercalendar)
 ```
 
 ``` r
-now = Sys.time()
-today = Sys.Date()
-events = data.frame(title = paste("Event", 1:4),
-                 start  = c(isodate(today+(-1:1)), isotime(now)),
-                 end    = c(isodate(today+(0:2) ), isotime(now + 4800)),
-                 color  = c("red", "#3788d8", "green", "blue"))
-
+events = demoevents()
 head(events)
 #>     title                    start                      end   color
-#> 1 Event 1               2019-11-27               2019-11-28     red
-#> 2 Event 2               2019-11-28               2019-11-29 #3788d8
-#> 3 Event 3               2019-11-29               2019-11-30   green
-#> 4 Event 4 2019-11-28T19:09:53+1300 2019-11-28T20:29:53+1300    blue
+#> 1 Event 0               2019-11-27               2019-11-28     red
+#> 2 Event 1               2019-11-28               2019-11-29 #3788d8
+#> 3 Event 2               2019-11-29               2019-11-30   green
+#> 4 Event 3 2019-11-28T22:20:00+1300 2019-11-28T23:40:00+1300    blue
 ```
 
 ![man/figures/README-display-1.png](man/figures/README-display-1.png)
@@ -61,13 +55,17 @@ head(events)
 library(shiny)
 library(fullercalendar)
 
+set.seed(42)
+
+events = randomevents()
+
 ui <- fluidPage(
-  fullercalendarOutput('mycal'),
+  fullercalendarOutput('calendar')
 )
 
 server <- function(input, output, session) {
-  output$mycal = renderFullercalendar({
-    fc = fullercalendar(events)
+  output$calendar = renderFullercalendar({
+    fc = fullercalendar(events, defaultView = 'timeGridWeek')
     fc
   })
 }
