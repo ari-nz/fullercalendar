@@ -11,10 +11,15 @@
 #' @param width Fixed width for widget (in css units). The default is NULL, which results in intelligent automatic sizing based on the widget's container.
 #' @param height Fixed height for widget (in css units). The default is NULL, which results in intelligent automatic sizing based on the widget's container.
 #' @param elementId Use an explicit element ID for the widget (rather than an automatically generated one). Useful if you have other JavaScript that needs to explicitly discover and interact with a specific widget instance.
-#' @param ... Other options which can be set specifically, that are not specified here: https://fullcalendar.io/docs/dynamic-options
+#' @param ... Other options which can be set specifically, that are not specified here: https://fullcalendar.io/docs/dynamic-options. See details.
 #' @param plugins List of plugins to use when initialising the calendar
 #' @param defaultView A name of any of the available views, such as 'dayGridWeek', 'timeGridDay', 'listWeek'
 #' @param defaultDate The initial date displayed when the calendar first loads. Date When not specified, this value defaults to the current date. This value can be anything that can parse into a Date, including an ISO8601 date string like "2014-02-01".
+#'
+#' @details
+#' The page https://fullcalendar.io/docs#toc defines the many options available to modifying the calendar object. Currently, most non-method properties are implemented.
+#'
+#'
 #'
 #' @export
 #' @examples

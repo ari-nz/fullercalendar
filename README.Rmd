@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# fullercalendar
+# fullercalendar <img src='man/figures/logo.svg' align="right" height="139" />
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/ari-nz/fullercalendar.svg?branch=master)](https://travis-ci.org/ari-nz/fullercalendar)

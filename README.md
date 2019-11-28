@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# fullercalendar
+# fullercalendar <img src='man/figures/logo.svg' align="right" height="139" />
 
 <!-- badges: start -->
 
@@ -45,10 +45,10 @@ events = data.frame(title = paste("Event", 1:4),
 
 head(events)
 #>     title                    start                      end   color
-#> 1 Event 1               2019-11-24               2019-11-25     red
-#> 2 Event 2               2019-11-25               2019-11-26 #3788d8
-#> 3 Event 3               2019-11-26               2019-11-27   green
-#> 4 Event 4 2019-11-25T15:07:19+1300 2019-11-25T16:27:19+1300    blue
+#> 1 Event 1               2019-11-27               2019-11-28     red
+#> 2 Event 2               2019-11-28               2019-11-29 #3788d8
+#> 3 Event 3               2019-11-29               2019-11-30   green
+#> 4 Event 4 2019-11-28T18:30:27+1300 2019-11-28T19:50:27+1300    blue
 ```
 
 ![man/figures/README-display-1.png](man/figures/README-display-1.png)
