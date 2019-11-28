@@ -42,7 +42,7 @@ isodate<-function(date){
 #' @examples
 #' demoevents()
 demoevents<-function(){
-  now = Sys.time()
+  now = round_time(Sys.time(), 5)
   today = Sys.Date()
   events = data.frame(title = paste("Event", 0:3),
                     start  = c(isodate(today+(-1:1)), isotime(now)),
@@ -63,12 +63,9 @@ demoevents<-function(){
 randomevents<-function(){
 
 
-  round_time<-function(time, minround){
-    as.POSIXlt(round(as.double(time)/(minround*60))*(minround*60),origin=(as.POSIXlt('1970-01-01')))
-  }
-  unit_vector  = function(x) {x / sqrt(sum(x^2))}
 
-  nevents = rpois(1,7)
+
+  nevents = max(3, rpois(1,7))
 
   now = Sys.time()
   today = Sys.Date()
@@ -77,19 +74,36 @@ randomevents<-function(){
   lengths_prob = unit_vector( 1/lengths_opts)
 
   event_starts = now + runif(nevents, -3.5, 3.5) * 86400
-  event_starts = round_time(event_starts, 15)
+  event_starts = sort(round_time(event_starts, 15))
   event_ends = event_starts + sample(lengths_opts, prob = lengths_prob, size = nevents, replace = TRUE) * 3600
 
   events = data.frame(title = paste("Event", 0:(nevents-1)),
                       start  = isotime(event_starts),
                       end    = isotime(event_ends),
-                      color  = as.character(sample(html_colours, nevents))
+                      color  = as.character(sample(html_colours, nevents)),
+                      borderColor = "#000000"
   )
+
+  ## Do some colour correction for the text
+  rgb_cols = col2rgb(events$color)
+  black_contrast = (299*(255-rgb_cols[1,]) + 587*(255-rgb_cols[2,]) + 114*(255-rgb_cols[3,])) / 1000
+  white_contrast = (299*rgb_cols[1,] + 587*rgb_cols[2,] + 114*rgb_cols[3,]) / 1000
+  text_col = ifelse(black_contrast <= white_contrast, 'black', 'white')
+
+  events$textColor = text_col
 
   events
 }
 
 
+
+round_time<-function(time, minround){
+  as.POSIXlt(round(as.double(time)/(minround*60))*(minround*60),origin=(as.POSIXlt('1970-01-01')))
+}
+
+
+
+unit_vector  = function(x) {x / sqrt(sum(x^2))}
 
 
 

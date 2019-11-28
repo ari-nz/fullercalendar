@@ -14,6 +14,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
+    data.table (>= 1.8.2),
+    fasttime,
     htmlwidgets,
     magrittr
 Suggests: 

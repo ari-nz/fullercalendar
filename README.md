@@ -9,6 +9,8 @@
 status](https://travis-ci.org/ari-nz/fullercalendar.svg?branch=master)](https://travis-ci.org/ari-nz/fullercalendar)
 [![Codecov test
 coverage](https://codecov.io/gh/ari-nz/fullercalendar/branch/master/graph/badge.svg)](https://codecov.io/gh/ari-nz/fullercalendar?branch=master)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
 The goal of fullercalendar is to …
@@ -48,7 +50,7 @@ head(events)
 #> 1 Event 1               2019-11-27               2019-11-28     red
 #> 2 Event 2               2019-11-28               2019-11-29 #3788d8
 #> 3 Event 3               2019-11-29               2019-11-30   green
-#> 4 Event 4 2019-11-28T18:30:27+1300 2019-11-28T19:50:27+1300    blue
+#> 4 Event 4 2019-11-28T19:09:53+1300 2019-11-28T20:29:53+1300    blue
 ```
 
 ![man/figures/README-display-1.png](man/figures/README-display-1.png)
