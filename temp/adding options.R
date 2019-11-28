@@ -49,8 +49,7 @@ server <- function(input, output, session) {
   output$test =  renderFullercalendar(fullercalendar(data))
 
   observeEvent(input$btn, {
-    df = fc_to_r(input$test)
-    browser()
+    df = input$test
     output$df = DT::renderDataTable(df) %>%
       DT::formatDate(c('start','end'), 'toLocaleString')
   })
@@ -73,7 +72,9 @@ runApp(list(ui=ui, server=server),launch.browser = TRUE)
 
 ui <- fluidPage(
   fluidRow(
-    actionButton('btn','lbl')
+    actionButton('btn','lbl'),
+    actionButton('dbg','dbg')
+
   ),
   fluidRow(
     fullercalendarOutput('test', height = '400px'),
@@ -98,8 +99,12 @@ server <- function(input, output, session) {
                    )
     )
 
-  observeEvent(input$btn, {
-    df = fc_to_r(input$test)
+  observeEvent(input$dbg, {
+    browser()
+  })
+
+  observeEvent(input$test, {
+    df = input$test
     df$start = as.character(df$start)
     df$end = as.character(df$end)
     output$df = DT::renderDataTable(df[,1:8], extensions = 'FixedColumns',

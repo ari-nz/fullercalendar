@@ -68,14 +68,71 @@ HTMLWidgets.widget({
          if (HTMLWidgets.shinyMode) {
             console.log("Is Shiny: ", HTMLWidgets.shinyMode)
 
-           var storedEvents = calendar.getEvents();
 
-            // See: https://fullcalendar.io/docs/event-parsing
-            // https://fullcalendar.io/docs/event-object
-            Shiny.onInputChange(
-              elementId,
-              JSON.stringify(
-                storedEvents.map(function(ev) {
+
+              // Send data through before any events have occured.
+              Shiny.onInputChange(
+                elementId+ ":fc_events",
+                filterEventMetadata(calendar.getEvents())
+              );
+
+
+              // Update data when events drop.
+              var dropCounter = 0
+              calendar.on('eventDrop', function (properties) {
+
+                console.log('drop!', dropCounter++)
+                Shiny.onInputChange(
+                  elementId+ ":fc_events",
+                  filterEventMetadata(this.getEvents())
+                );
+
+              });
+
+              // Update data when events are resized.
+              var resizeCounter = 0
+              calendar.on('eventResize', function (properties) {
+
+                console.log('resize!', resizeCounter++)
+                Shiny.onInputChange(
+                  elementId+ ":fc_events",
+                  filterEventMetadata(this.getEvents())
+                );
+
+              });
+
+
+
+
+         }
+
+
+
+      },
+
+      resize : function(width, height) {
+        // we won't be implementing a resize function
+      },
+
+
+    };
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+var filterEventMetadata = function(events){
+
+ return JSON.stringify(
+                events.map(function(ev) {
                   return {
                     allDay             : ev.allDay
                     , title              : ev.title
@@ -98,30 +155,11 @@ HTMLWidgets.widget({
                   }
 
                 })
-              )
-              );
-
-              // Items have been manually selected
-              calendar.on('select', function (properties) {
-                Shiny.onInputChange(
-                  elementId + "_selected",
-                  properties.items
                 );
-              });
-         }
+
+}
 
 
-
-      },
-
-      resize : function(width, height) {
-        // we won't be implementing a resize function
-      },
-
-
-    };
-  }
-});
 
 //if (HTMLWidgets.shinyMode) {
 //  var fxns = ['addEvent'];

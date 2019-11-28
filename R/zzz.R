@@ -1,5 +1,8 @@
 .onLoad <- function(libname, pkgname) {
-  # shiny::registerInputHandler("fullercalendardata", function(data, ...) {
-  #   jsonlite::fromJSON(jsonlite::toJSON(data, auto_unbox = TRUE))
-  # })
+
+
+  # Unbox the events when droped.
+  shiny::registerInputHandler("fc_events", function(data, ...) {
+    jsonlite::fromJSON(data)
+  })
 }
