@@ -65,6 +65,51 @@ HTMLWidgets.widget({
         }
 
 
+         if (HTMLWidgets.shinyMode) {
+            console.log("Is Shiny: ", HTMLWidgets.shinyMode)
+
+           var storedEvents = calendar.getEvents();
+
+            // See: https://fullcalendar.io/docs/event-parsing
+            // https://fullcalendar.io/docs/event-object
+            Shiny.onInputChange(
+              elementId,
+              JSON.stringify(
+                storedEvents.map(function(ev) {
+                  return {
+                    allDay             : ev.allDay
+                    , title              : ev.title
+                    , start              : ev.start
+                    , end                : ev.end
+                    , allow              : ev.allow
+                    , id                 : ev.id
+                    , backgroundColor    : ev.backgroundColor
+                    , borderColor        : ev.borderColor
+                    // , classNames         : ev.classNames
+                    , constraint         : ev.constraint
+                    , durationEditable   : ev.durationEditable
+                    , groupId            : ev.groupId
+                    , overlap            : ev.overlap
+                    , rendering          : ev.rendering
+                    , startEditable      : ev.startEditable
+                    , textColor          : ev.textColor
+                    , url                : ev.url
+
+                  }
+
+                })
+              )
+              );
+
+              // Items have been manually selected
+              calendar.on('select', function (properties) {
+                Shiny.onInputChange(
+                  elementId + "_selected",
+                  properties.items
+                );
+              });
+         }
+
 
 
       },

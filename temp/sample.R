@@ -21,7 +21,7 @@ fullercalendar(events =  data)
 
 
 ui_1 <- fluidPage(
-  fullercalendar(events = data,width = '100%')
+  fullercalendar(events = data, width = '100%')
 )
 
 server_1 <- function(input, output, session) {
