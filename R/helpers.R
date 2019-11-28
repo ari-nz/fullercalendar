@@ -36,13 +36,11 @@ isodate<-function(date){
 
 #' Create demo date events
 #'
-#' @return Data which is set to be equal to datetimes roughly around the users current system time
+#' @return Data which is capable of being used in fullercalendar, with datetimes roughly around the users current system time
 #' @export
-#'
+#' @rdname fullercalendar-demoevents
 #' @examples
-#' \donttest{
-#' demodates()
-#' }
+#' demoevents()
 demoevents<-function(){
   now = Sys.time()
   today = Sys.Date()
@@ -54,6 +52,14 @@ demoevents<-function(){
   return(events)
 }
 
+
+
+
+
+#' @rdname fullercalendar-demoevents
+#' @export
+#' @examples
+#' randomevents()
 randomevents<-function(){
 
 

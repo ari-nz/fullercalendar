@@ -2,18 +2,20 @@
 % Please edit documentation in R/helpers.R
 \name{demoevents}
 \alias{demoevents}
+\alias{randomevents}
 \title{Create demo date events}
 \usage{
 demoevents()
+
+randomevents()
 }
 \value{
-Data which is set to be equal to datetimes roughly around the users current system time
+Data which is capable of being used in fullercalendar, with datetimes roughly around the users current system time
 }
 \description{
 Create demo date events
 }
 \examples{
-\donttest{
-demodates()
-}
+demoevents()
+randomevents()
 }

@@ -14,7 +14,7 @@ to follow the naming conventions by FullCalendar shown here: https://fullcalenda
 This data frame will then be translated into a json array by means of \code{jsonlite::toJSON}. The required
 columns are \code{title}, a string, and \code{start} as string parse-able as a date, for example, "2017-02-28".}
 
-\item{...}{Other options which can be set specifically, that are not specified here: https://fullcalendar.io/docs/dynamic-options}
+\item{...}{Other options which can be set specifically, that are not specified here: https://fullcalendar.io/docs/dynamic-options. See details.}
 
 \item{plugins}{List of plugins to use when initialising the calendar}
 
@@ -33,12 +33,15 @@ This function creates a FullCalendar htmlwidget that will show up
 in the viewer pane, if you're running RStudio, or in your Rmarkdown
 document.
 }
+\details{
+The page https://fullcalendar.io/docs#toc defines the many options available to modifying the calendar object. Currently, most non-method properties are implemented.
+}
 \examples{
 fullercalendar(events =  demoevents())
 
 \donttest{
 fullercalendar(demoevents(),
-               defaultView = "dayGridWeek",
+               defaultView = "timeGridWeek",
                weekends = TRUE,
                hiddenDays= c(2, 6),
                slotDuration = '00:10:00',
