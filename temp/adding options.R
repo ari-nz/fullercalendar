@@ -72,15 +72,35 @@ runApp(list(ui=ui, server=server),launch.browser = TRUE)
 
 ui <- fluidPage(
   fluidRow(
-    actionButton('btn','lbl'),
-    actionButton('dbg','dbg')
+    actionButton('btn','table'),
+    actionButton('dbg','debug'),
+    actionButton('pop','popup')
 
   ),
   fluidRow(
     fullercalendarOutput('test', height = '400px'),
-    DT::dataTableOutput("df")
+    hr(),
+    h2("Event Data:"),
+    DT::dataTableOutput("df"),
+    hr(),
+    h2("Input Data:"),
+    verbatimTextOutput('show_inputs')
   )
 )
+
+
+event_modal = function(){
+  md = modalDialog(
+    title = "Create Event",
+    textInput('new_event_title', "Event Name:"),
+    footer = tagList(
+      modalButton("Cancel"),
+      actionButton("confirm_event", "Confirm")
+    )
+  )
+  return(md)
+}
+
 
 server <- function(input, output, session) {
   output$test =  renderFullercalendar(
@@ -102,6 +122,18 @@ server <- function(input, output, session) {
   observeEvent(input$dbg, {
     browser()
   })
+  observeEvent(input$pop, {
+      showModal(event_modal())
+  })
+
+  shiny_inputs = reactive({
+    rv = reactiveValuesToList(input)
+    rv[!grepl('^df_',names(rv))] # remove df values
+  })
+  output$show_inputs <- renderPrint({
+    shiny_inputs()
+  })
+
 
   observeEvent(input$test, {
     df = input$test
@@ -132,32 +164,32 @@ runApp(list(ui=ui, server=server),launch.browser = TRUE)
 
 
 
-
-
-
-
-
-library(shiny)
-
-ui <- fluidPage(
-  actionButton('btn','lbl'),
-  rHandsontableOutput('test'),
-  textOutput("df")
-)
-
-server <- function(input, output, session) {
-  output$test =  renderRHandsontable(rhandsontable(iris))
-  observeEvent(input$btn, {
-    browser()
-    df = hot_to_r(input$test)
-    df$start = as.POSIXct(df$start)
-    output$df = renderPrint(df)
-  })
-}
-
-shinyApp(ui, server)
-
-
+#
+#
+#
+#
+#
+# library(shiny)
+#
+# ui <- fluidPage(
+#   actionButton('btn','lbl'),
+#   rHandsontableOutput('test'),
+#   textOutput("df")
+# )
+#
+# server <- function(input, output, session) {
+#   output$test =  renderRHandsontable(rhandsontable(iris))
+#   observeEvent(input$btn, {
+#     browser()
+#     df = hot_to_r(input$test)
+#     df$start = as.POSIXct(df$start)
+#     output$df = renderPrint(df)
+#   })
+# }
+#
+# shinyApp(ui, server)
+#
+#
 
 
 

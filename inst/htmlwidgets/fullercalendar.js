@@ -102,6 +102,31 @@ HTMLWidgets.widget({
               });
 
 
+              // Update data when events are selected.
+              var selectCounter = 0
+              calendar.on('select', function (selectionInfo) {
+
+                console.log('select!', selectCounter++)
+                Shiny.onInputChange(
+                  elementId+ "_select:fc_select",
+                  filterSelectMetadata(selectionInfo)
+                );
+
+              });
+
+              // Update data when events are clicked.
+              var eventClickCounter = 0
+              calendar.on('eventClick', function (eventClickInfo ) {
+
+                console.log('click!', eventClickCounter++)
+                Shiny.onInputChange(
+                  elementId + "_eventClick:fc_eventClick",
+                  eventClickInfo.event.id // Send just the id back?
+                );
+
+              });
+
+
 
 
          }
@@ -157,6 +182,24 @@ var filterEventMetadata = function(events){
                 })
                 );
 
+}
+
+var filterSelectMetadata = function(selectionInfo){
+ return JSON.stringify(selectionInfo, [
+                    "allDay"
+                    , "start"
+                    , "end"
+                    , "startStr"
+                    , "endStr"
+                  //  , "jsEvent"
+                    ]);
+}
+
+var filterEventClickMetadata = function(eventClickInfo ){
+ return JSON.stringify(eventClickInfo, [
+                      "event"
+                    , "el"
+                  ]);
 }
 
 
