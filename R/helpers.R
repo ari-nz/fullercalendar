@@ -54,6 +54,10 @@ demoevents<-function(){
 
 
 
+`%notin%` <-function(x,y){
+  !(x%in%y)
+}
+
 
 
 #' @rdname fullercalendar-demoevents

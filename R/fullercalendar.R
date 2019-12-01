@@ -27,17 +27,19 @@
 #'
 #'\donttest{
 #' fullercalendar(demoevents(),
-#'                defaultView = "timeGridWeek",
-#'                weekends = TRUE,
-#'                hiddenDays= c(2, 6),
-#'                slotDuration = '00:10:00',
-#'                firstDay = 1,
-#'                weekNumbers = TRUE,
-#'                selectable = TRUE,
-#'                selectMirror = TRUE,
-#'                editable = TRUE,
-#'                dropable = TRUE,
-#'
+#'                defaultView   =   "timeGridWeek",
+#'                weekends      =   TRUE,
+#'                hiddenDays    =   c(5),
+#'                minTime       =   "05:00:00",
+#'                maxTime       =   "22:00:00",
+#'                slotDuration  =   "00:15:00",
+#'                scrollTime    =   "10:00:00",
+#'                firstDay      =   1,
+#'                weekNumbers   =   TRUE,
+#'                selectable    =   TRUE,
+#'                selectMirror  =   TRUE,
+#'                editable      =   TRUE,
+#'                dropable      =   TRUE
 #' )
 #'}
 #'
@@ -51,6 +53,14 @@ fullercalendar <- function(events = list()
                            , defaultDate = NULL
 )  {
   settings = list(...)
+
+  # Ensure events comes with an id column
+  if("id" %notin% names(events)){
+    events = cbind(id = seq_len(nrow(events)), events)
+  }
+
+
+
 
   full_opts = list(
     events = events,
